@@ -1,8 +1,9 @@
-package com.accenture.task.service;
+package com.accenture.task.service.impl;
 
 import com.accenture.task.constatnts.CovidConstants;
 import com.accenture.task.exception.CustomException;
 import com.accenture.task.model.Countries;
+import com.accenture.task.service.CovidReportService;
 import com.google.gson.Gson;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,12 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 @Service
-public class CovidReportService {
+public class CovidReportServiceImpl implements CovidReportService {
 
+    @Override
     public float getCorrelationCoefficient(String input) {
-        String vaccineUrl = CovidConstants.CONTINENT_VACCINE_URL;
-        String covidCaseUrl = CovidConstants.CONTINENT_COVID_CASES_URL;
+        String vaccineUrl = CovidConstants.ALL_COUNTRIES_VACCINE_URL;
+        String covidCaseUrl = CovidConstants.ALL_COUNTRIES_COVID_CASES_URL;
 
         if(input != null && !input.equals(CovidConstants.ALL)){
             vaccineUrl = CovidConstants.CONTINENT_VACCINE_URL + input;
@@ -43,7 +45,6 @@ public class CovidReportService {
 
         covidDeathsMap.forEach((k, v) -> {
 
-            double percentage;
             if (vaccineMap.containsKey(k)) {
                 Object vaccineMapValues = vaccineMap.get(k);
                 vaccinePercentageList.add(getPercentage(vaccineMapValues, CovidConstants.VACCINE));

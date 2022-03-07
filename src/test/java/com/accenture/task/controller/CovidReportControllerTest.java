@@ -1,6 +1,7 @@
 package com.accenture.task.controller;
 
 import com.accenture.task.service.CovidReportService;
+import com.accenture.task.service.impl.CovidReportServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -26,7 +27,7 @@ public class CovidReportControllerTest {
     @Test
     public void getCorrelationCoefficientForAllCountriesTest() throws Exception {
 
-        Mockito.when(covidReportService.getCorrelationCoefficientForAllCountries(Mockito.any())).thenReturn(1.1f);
+        Mockito.when(covidReportService.getCorrelationCoefficient(Mockito.any())).thenReturn(1.1f);
         mockMvc.perform(get("/covid/allCountries"))
                 .andExpect(status().isOk());
     }
@@ -34,7 +35,7 @@ public class CovidReportControllerTest {
     @Test
     public void getCorrelationCoefficientForContinentTest() throws Exception {
 
-        Mockito.when(covidReportService.getCorrelationCoefficientForContinent(Mockito.any())).thenReturn(1.1f);
+        Mockito.when(covidReportService.getCorrelationCoefficient(Mockito.any())).thenReturn(1.1f);
         mockMvc.perform(get("/covid/continent").param("continent", "Europe"))
                 .andExpect(status().isOk());
     }

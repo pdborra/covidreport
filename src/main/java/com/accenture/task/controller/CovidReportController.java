@@ -3,6 +3,7 @@ package com.accenture.task.controller;
 import com.accenture.task.constatnts.CovidConstants;
 import com.accenture.task.model.Countries;
 import com.accenture.task.service.CovidReportService;
+import com.accenture.task.service.impl.CovidReportServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class CovidReportController {
             produces = "application/json", response = Countries.class, httpMethod = "GET")
     public float getCorrelationCoefficientForAllCountries() {
 
-        return covidReportService.getCorrelationCoefficientForAllCountries(CovidConstants.ALL);
+        return covidReportService.getCorrelationCoefficient(CovidConstants.ALL);
     }
 
     @GetMapping(value = "/continent")
@@ -32,6 +33,6 @@ public class CovidReportController {
             produces = "application/json", response = Countries.class, httpMethod = "GET")
     public float getCorrelationCoefficientFoContinent(@RequestParam String continent) {
 
-        return covidReportService.getCorrelationCoefficientForContinent(continent);
+        return covidReportService.getCorrelationCoefficient(continent);
     }
 }
