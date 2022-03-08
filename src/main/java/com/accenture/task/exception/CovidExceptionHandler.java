@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class CovidExceptionHandler {
 
-    @ExceptionHandler(value = CustomException.class)
-    public ResponseEntity<Object> handleValueNotFound(CustomException exception) {
+    @ExceptionHandler(value = CovidUserDefinedException.class)
+    public ResponseEntity<Object> handleValueNotFound(CovidUserDefinedException exception) {
 
         return new ResponseEntity<>(exception.getErrorMessage(), HttpStatus.NOT_FOUND);
     }

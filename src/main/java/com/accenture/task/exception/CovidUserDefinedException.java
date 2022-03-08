@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomException extends RuntimeException {
+public class CovidUserDefinedException extends RuntimeException {
 
     private String errorMessage;
 
